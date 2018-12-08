@@ -3,6 +3,9 @@ import io
 import json
 from json.decoder import JSONDecodeError
 from urllib.request import urlopen
+from 用字.models import 用字表
+from 臺灣言語工具.解析整理.拆文分析器 import 拆文分析器
+from 臺灣言語工具.音標系統.閩南語.臺灣閩南語羅馬字拼音 import 臺灣閩南語羅馬字拼音
 
 
 class Pio:
@@ -51,5 +54,13 @@ class Pio:
                     kiatko[漢字] = 臺羅
         return kiatko
 
+    @classmethod
+    def mia(cls):
+        kiatko = {}
+        for 分詞 in 用字表.全部分詞():
+            字物件 = 拆文分析器.分詞字物件(分詞).轉音(臺灣閩南語羅馬字拼音, '轉調符')
+            kiatko[字物件.型] = 字物件.音
+        return kiatko
 
 sennPio = Pio.senn()
+miaPio = Pio.mia()

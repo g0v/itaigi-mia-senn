@@ -1,4 +1,4 @@
-from tsha.pio import sennPio
+from tsha.pio import sennPio, miaPio
 
 
 def tsaSenn(senn):
@@ -16,6 +16,17 @@ def tsaSenn(senn):
             kiatko.append(sennPio[koo])
             sootsai += 1
         else:
-            kiatko.append('?')
+            kiatko.append(tsaMia(koo))
             sootsai += 1
     return '-'.join(kiatko)
+
+
+def tsaMia(mia):
+    kiatko = []
+    for ji in mia:
+        if ji in miaPio:
+            kiatko.append(miaPio[ji])
+        else:
+            kiatko.append('?')
+    siongbue = '-'.join(kiatko)
+    return siongbue[:1].upper() + siongbue[1:]

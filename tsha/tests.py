@@ -1,5 +1,5 @@
 from django.test import TestCase
-from tsha.views import tsaSenn
+from tsha.views import tsaSenn, tsaMia
 
 
 # Create your tests here.
@@ -18,3 +18,20 @@ class SennTshiGiam(TestCase):
     def test_HokSenn(self):
         self.han = '郭陳'
         self.lo = 'Kueh-Tân'
+
+    def test_KiThann(self):
+        self.han = '媠'
+        self.lo = 'Suí'
+
+
+class MiaTshiGiam(TestCase):
+    def tearDown(self):
+        self.assertEqual(tsaMia(self.han), self.lo)
+
+    def test_KooJi(self):
+        self.han = '媠'
+        self.lo = 'Suí'
+
+    def test_SiangJi(self):
+        self.han = '媠媠'
+        self.lo = 'Suí-suí'
