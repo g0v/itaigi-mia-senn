@@ -4,8 +4,6 @@ services:
   gunicorn:
     build: .
     command: gunicorn miasenn.wsgi --log-level debug -b 0.0.0.0:8000
-    ports:
-      - "8000:8000"
     expose:
       - "8000"
     environment:
