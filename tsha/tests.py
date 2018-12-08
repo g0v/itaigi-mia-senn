@@ -41,3 +41,7 @@ class MiaTshiGiam(TestCase):
     def test_SiangJi(self):
         self.han = '媠媠'
         self.lo = 'Suí-suí'
+
+    def test_KhinSiannJi(self):
+        self.han = '矣'
+        self.lo = 'Ah'

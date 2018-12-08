@@ -59,7 +59,7 @@ class Pio:
         kiatko = {}
         for 分詞 in 用字表.全部分詞():
             字物件 = 拆文分析器.分詞字物件(分詞).轉音(臺灣閩南語羅馬字拼音, '轉調符')
-            kiatko[字物件.型] = 字物件.音
+            kiatko[字物件.型] = 字物件.音.strip('0')
         return kiatko
 
 
