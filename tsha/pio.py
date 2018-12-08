@@ -26,7 +26,8 @@ class Pio:
             kiatko = cls._senn()
             with open(cls.tongMia, 'wt', encoding='utf-8') as tong:
                 return json.dump(
-                    kiatko, tong, ensure_ascii=False, indent=2
+                    kiatko, tong,
+                    ensure_ascii=False, indent=2, sort_keys=True,
                 )
             return kiatko
 
