@@ -1,5 +1,7 @@
 from csv import DictReader
 import io
+import json
+from json.decoder import JSONDecodeError
 from urllib.request import urlopen
 
 
@@ -13,6 +15,20 @@ class Pio:
         '%E8%A9%9E%E7%9B%AE%E7%B8%BD%E6%AA%94'
         '.%E8%A9%9E%E7%9B%AE%E5%B1%AC%E6%80%A7%E5%B0%8D%E7%85%A7.csv'
     )
+    tongMia = 'senn.json'
+
+    @classmethod
+    def senn(cls):
+        try:
+            with open(cls.tongMia, 'rt', encoding='utf-8') as tong:
+                return json.load(tong)
+        except (FileNotFoundError, JSONDecodeError):
+            kiatko = cls._senn()
+            with open(cls.tongMia, 'wt', encoding='utf-8') as tong:
+                return json.dump(
+                    kiatko, tong, ensure_ascii=False, indent=2
+                )
+            return kiatko
 
     @classmethod
     def _senn(cls):
@@ -35,4 +51,4 @@ class Pio:
         return kiatko
 
 
-sennPio = Pio._senn()
+sennPio = Pio.senn()
