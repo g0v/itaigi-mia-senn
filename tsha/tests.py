@@ -2,7 +2,13 @@ from django.test import TestCase
 from tsha.views import tsaSenn, tsaMia
 
 
-# Create your tests here.
+class KaiBinTshiGiam(TestCase):
+    def test_lian(self):
+        kiatko = self.client.get('/李/阿水/').json()
+        self.assertIn('Senn', kiatko)
+        self.assertIn('Mia', kiatko)
+
+
 class SennTshiGiam(TestCase):
     def tearDown(self):
         self.assertEqual(tsaSenn(self.han), self.lo)

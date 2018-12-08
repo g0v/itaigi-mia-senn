@@ -1,4 +1,12 @@
 from tsha.pio import sennPio, miaPio
+from django.http.response import JsonResponse
+
+
+def kaibin(request, senn, mia):
+    return JsonResponse({
+        'Senn': tsaSenn(senn),
+        'Mia': tsaMia(mia),
+    })
 
 
 def tsaSenn(senn):
