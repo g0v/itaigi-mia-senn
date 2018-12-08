@@ -28,7 +28,7 @@ class Pio:
         except (FileNotFoundError, JSONDecodeError):
             kiatko = cls._senn()
             with open(cls.tongMia, 'wt', encoding='utf-8') as tong:
-                return json.dump(
+                json.dump(
                     kiatko, tong,
                     ensure_ascii=False, indent=2, sort_keys=True,
                 )
@@ -61,6 +61,7 @@ class Pio:
             字物件 = 拆文分析器.分詞字物件(分詞).轉音(臺灣閩南語羅馬字拼音, '轉調符')
             kiatko[字物件.型] = 字物件.音
         return kiatko
+
 
 sennPio = Pio.senn()
 miaPio = Pio.mia()
