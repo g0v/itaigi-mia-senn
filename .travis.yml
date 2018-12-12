@@ -11,7 +11,7 @@ branches:
   - master
   - "/\\d+\\.\\d+\\.\\d+/"
 before_script:
-- pip install coveralls
+- pip install tox coveralls
 script:
 - tox -e $TOX_ENV
 after_success:
