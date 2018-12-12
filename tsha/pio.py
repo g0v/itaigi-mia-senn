@@ -24,7 +24,8 @@ class Pio:
         '.%E6%96%87%E7%99%BD%E5%B1%AC%E6%80%A7.csv'
     )
     甘字典網址 = (
-        'https://github.com/fhl-net/Kam-Ui-lim_1913_Kam-Ji-tian/raw/master/dict.csv'
+        'https://github.com/fhl-net/Kam-Ui-lim_1913_Kam-Ji-tian'
+        '/raw/master/dict.csv'
     )
     tongMia = 'miasenn.json'
 
@@ -90,11 +91,11 @@ class Pio:
                     key=lambda x: x['文白屬性'], reverse=True
                 ):
                     if row['屬性'].strip() in senn的屬性:
-                        臺羅 = row['音讀'].strip()
+                        臺羅 = row['音讀'].strip().split('/')[0]
                         漢字 = row['詞目'].strip()
                         sennkiatko[漢字] = 臺羅
                     elif row['文白屬性'].strip() not in miabuaih屬性:
-                        臺羅 = row['音讀'].strip().strip('-').lower()
+                        臺羅 = row['音讀'].strip().strip('-').split('/')[0].lower()
                         漢字 = row['詞目'].strip()
                         if len(漢字) == 1:
                             miakiatko[漢字] = 臺羅

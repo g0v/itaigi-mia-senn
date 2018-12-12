@@ -29,6 +29,10 @@ class SennTshiGiam(TestCase):
         self.han = '媠'
         self.lo = 'Suí'
 
+    def test_KiunnKhauTsha(self):
+        self.han = '鄭'
+        self.lo = 'Tēnn'
+
 
 class MiaTshiGiam(TestCase):
     def tearDown(self):
@@ -53,3 +57,7 @@ class MiaTshiGiam(TestCase):
     def test_KamJiTianBunIm(self):
         self.han = '丞'
         self.lo = 'Sîng'
+
+    def test_KiunnKhauTsha(self):
+        self.han = '雞'
+        self.lo = 'Ke'
