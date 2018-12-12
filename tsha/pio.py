@@ -3,6 +3,9 @@ import io
 import json
 from json.decoder import JSONDecodeError
 from urllib.request import urlopen
+from 臺灣言語工具.羅馬字.台語 import 白話字
+from 臺灣言語工具.解析整理.拆文分析器 import 拆文分析器
+from 臺灣言語工具.音標系統.閩南語.臺灣閩南語羅馬字拼音 import 臺灣閩南語羅馬字拼音
 
 
 class Pio:
@@ -19,6 +22,9 @@ class Pio:
         github網址 +
         '%E8%A9%9E%E7%9B%AE%E7%B8%BD%E6%AA%94'
         '.%E6%96%87%E7%99%BD%E5%B1%AC%E6%80%A7.csv'
+    )
+    甘字典網址 = (
+        'https://github.com/fhl-net/Kam-Ui-lim_1913_Kam-Ji-tian/raw/master/dict.csv'
     )
     tongMia = 'miasenn.json'
 
@@ -46,6 +52,21 @@ class Pio:
 
     @classmethod
     def _sng(cls):
+        miakiatko = {}
+        with urlopen(cls.甘字典網址) as 檔:
+            with io.StringIO(檔.read().decode()) as 資料:
+                for row in DictReader(資料):
+                    if row['word'].strip()[0].isupper():
+                        臺羅 = row['word'].strip().strip('-').lower()
+                        漢字 = row['chinese'].strip()
+                        if len(漢字) == 1:
+                            miakiatko[漢字] = (
+                                拆文分析器.建立字物件(臺羅)
+                                .轉音(白話字, '轉換到臺灣閩南語羅馬字拼音')
+                                .轉音(臺灣閩南語羅馬字拼音, '轉調符')
+                                .看語句()
+                            )
+
         senn的屬性 = set()
         with urlopen(cls.詞目總檔屬性網址) as 檔:
             with io.StringIO(檔.read().decode()) as 資料:
@@ -62,7 +83,6 @@ class Pio:
                         miabuaih屬性.add(row['編號'].strip())
 
         sennkiatko = {}
-        miakiatko = {}
         with urlopen(cls.詞目總檔網址) as 檔:
             with io.StringIO(檔.read().decode()) as 資料:
                 for row in sorted(
