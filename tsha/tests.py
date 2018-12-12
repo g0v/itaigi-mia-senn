@@ -49,3 +49,7 @@ class MiaTshiGiam(TestCase):
     def test_BunIm(self):
         self.han = '向'
         self.lo = 'Hiòng'
+
+    def test_KamJiTianBunIm(self):
+        self.han = '丞'
+        self.lo = 'Sîng'
