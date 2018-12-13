@@ -93,11 +93,12 @@ class Pio:
                     if row['屬性'].strip() in senn的屬性:
                         臺羅 = row['音讀'].strip().split('/')[0]
                         漢字 = row['詞目'].strip()
-                        sennkiatko[漢字] = 臺羅
+                        if 臺羅:
+                            sennkiatko[漢字] = 臺羅
                     elif row['文白屬性'].strip() not in miabuaih屬性:
                         臺羅 = row['音讀'].strip().strip('-').split('/')[0].lower()
                         漢字 = row['詞目'].strip()
-                        if len(漢字) == 1:
+                        if 臺羅 and len(漢字) == 1:
                             miakiatko[漢字] = 臺羅
         return miakiatko, sennkiatko
 

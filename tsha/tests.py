@@ -61,3 +61,7 @@ class MiaTshiGiam(TestCase):
     def test_KiunnKhauTsha(self):
         self.han = '雞'
         self.lo = 'Ke'
+
+    def test_Phing(self):
+        self.han = '萍'
+        self.lo = 'Phîng'
