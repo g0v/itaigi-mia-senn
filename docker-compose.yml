@@ -4,9 +4,14 @@ services:
   gunicorn:
     build: .
     command: gunicorn miasenn.wsgi --log-level debug -b 0.0.0.0:8000
-    expose:
-      - "8000"
+    networks:
+      - default
+      - nginx-bridge
     environment:
       VIRTUAL_HOST: "miasenn.xn--v0qr21b.xn--kpry57d"
       VIRTUAL_PORT: 8000
     restart: always
+
+networks:
+  nginx-bridge:
+    external: true
