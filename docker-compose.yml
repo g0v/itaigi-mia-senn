@@ -1,7 +1,7 @@
 version: '3.5'
 
 services:
-  gunicorn:
+  missenn:
     build: .
     command: gunicorn miasenn.wsgi --log-level debug -b 0.0.0.0:8000
     networks:
@@ -11,6 +11,18 @@ services:
       - 8000
     environment:
       VIRTUAL_HOST: "miasenn.xn--v0qr21b.xn--kpry57d"
+      VIRTUAL_PORT: 8000
+    restart: always
+  leku:
+    image: sih4sing5hong5/itaigi-leku
+    command: gunicorn hok8bu7.wsgi --log-level debug -b 0.0.0.0:8000
+    networks:
+      - default
+      - nginx-bridge
+    expose:
+      - 8000
+    environment:
+      VIRTUAL_HOST: "xn--fsqx9h.xn--v0qr21b.xn--kpry57d"
       VIRTUAL_PORT: 8000
     restart: always
 
