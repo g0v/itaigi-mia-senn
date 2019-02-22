@@ -2,6 +2,7 @@ from csv import DictReader
 import io
 import json
 from json.decoder import JSONDecodeError
+from os.path import join, dirname
 from urllib.request import urlopen
 from 臺灣言語工具.羅馬字.台語 import 白話字
 from 臺灣言語工具.解析整理.拆文分析器 import 拆文分析器
@@ -28,6 +29,7 @@ class Pio:
         '/raw/master/dict.csv'
     )
     tongMia = 'miasenn.json'
+    singpai_csv = join(dirname(__file__), 'singpai.csv')
 
     @classmethod
     def mia(cls):
@@ -100,6 +102,9 @@ class Pio:
                         漢字 = row['詞目'].strip()
                         if 臺羅 and len(漢字) == 1:
                             miakiatko[漢字] = 臺羅
+        with open(cls.singpai_csv) as tong:
+            for tsua in DictReader(tong):
+                miakiatko[tsua['Hàn']] = tsua['Lô']
         return miakiatko, sennkiatko
 
 

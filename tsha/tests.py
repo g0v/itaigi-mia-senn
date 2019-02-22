@@ -65,3 +65,7 @@ class MiaTshiGiam(TestCase):
     def test_Phing(self):
         self.han = '萍'
         self.lo = 'Phîng'
+
+    def test_KaTiKai(self):
+        self.han = '小'
+        self.lo = 'Sió'

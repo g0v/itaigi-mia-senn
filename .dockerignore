@@ -73,3 +73,5 @@ MANIFEST
 /.git
 /Dockerfile
 /docker-compose.yml
+/miasenn.json
+
