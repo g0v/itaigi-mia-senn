@@ -1,7 +1,7 @@
 version: '3.5'
 
 services:
-  missenn:
+  miasenn:
     build: .
     command: gunicorn miasenn.wsgi --log-level debug -b 0.0.0.0:8000
     networks:
@@ -12,6 +12,8 @@ services:
     environment:
       VIRTUAL_HOST: "miasenn.xn--v0qr21b.xn--kpry57d"
       VIRTUAL_PORT: 8000
+      LETSENCRYPT_HOST: "miasenn.xn--v0qr21b.xn--kpry57d"
+      LETSENCRYPT_EMAIL: "ithuan@xn--v0qr21b.xn--kpry57d"
     restart: always
   leku:
     image: sih4sing5hong5/itaigi-leku
@@ -24,6 +26,8 @@ services:
     environment:
       VIRTUAL_HOST: "xn--fsqx9h.xn--v0qr21b.xn--kpry57d"
       VIRTUAL_PORT: 8000
+      LETSENCRYPT_HOST: "xn--fsqx9h.xn--v0qr21b.xn--kpry57d"
+      LETSENCRYPT_EMAIL: "ithuan@xn--v0qr21b.xn--kpry57d"
     restart: always
 
 networks:
