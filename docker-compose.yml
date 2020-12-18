@@ -7,13 +7,10 @@ services:
     networks:
       - default
       - nginx-bridge
-    expose:
-      - 8000
     environment:
-      VIRTUAL_HOST: "miasenn.xn--v0qr21b.xn--kpry57d"
-      VIRTUAL_PORT: 8000
-      LETSENCRYPT_HOST: "miasenn.xn--v0qr21b.xn--kpry57d"
-      LETSENCRYPT_EMAIL: "ithuan@xn--v0qr21b.xn--kpry57d"
+      VIRTUAL_HOST: "miasenn.itaigi.tw"
+      LETSENCRYPT_HOST: "miasenn.itaigi.tw"
+      LETSENCRYPT_EMAIL: "ithuan@ithuan.tw"
     restart: always
   leku:
     image: sih4sing5hong5/itaigi-leku
@@ -24,10 +21,9 @@ services:
     expose:
       - 8000
     environment:
-      VIRTUAL_HOST: "xn--fsqx9h.xn--v0qr21b.xn--kpry57d"
-      VIRTUAL_PORT: 8000
-      LETSENCRYPT_HOST: "xn--fsqx9h.xn--v0qr21b.xn--kpry57d"
-      LETSENCRYPT_EMAIL: "ithuan@xn--v0qr21b.xn--kpry57d"
+      VIRTUAL_HOST: "leku.itaigi.tw"
+      LETSENCRYPT_HOST: "leku.itaigi.tw"
+      LETSENCRYPT_EMAIL: "ithuan@ithuan.tw"
     restart: always
 
 networks:
