@@ -1,0 +1,11 @@
+asgiref==3.3.1
+Django==3.1.4
+django-cors-headers==3.6.0
+gunicorn==20.0.4
+htsengine==0.2.4
+pydub==0.23.1
+pypi-bleualign==0.1.1.1
+pypi-kenlm==0.1.20190403
+pytz==2020.4
+sqlparse==0.4.1
+tai5-uan5-gian5-gi2-kang1-ku7==0.6.50
